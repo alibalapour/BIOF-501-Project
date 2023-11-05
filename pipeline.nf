@@ -16,7 +16,7 @@ process DOWNLOAD {
 
     script:
     """
-    Rscript ./scripts/download.R $series output_table.rds
+    Rscript $PWD/scripts/download.R $series output_table.rds
     """
 }
 
