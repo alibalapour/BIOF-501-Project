@@ -40,6 +40,6 @@ process DOWNLOAD {
 // }
 
 workflow {
-    downloadData(params.series)
+    DOWNLOAD(params.series)
 }
 
