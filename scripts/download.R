@@ -1,11 +1,26 @@
+# Access command-line arguments
+args <- commandArgs(trailingOnly = TRUE)
+
+# Check the number of arguments
+if (length(args) < 2) {
+    stop("Usage: Rscript download_data.R <series> <output_file>")
+}
+
+# Extract arguments
+series <- args[1]
+output_file <- args[2]
+
+
+
+# Installing libraries
+suppressMessages(install.packages(c("pheatmap", "reshape2", "plyr", "ggplot2", "stringr", "ggfortify"), repos = "http://cran.us.r-project.org"))
+
 if (!require("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
-
-suppressMessages(BiocManager::install("GEOquery"))
-suppressMessages(BiocManager::install("limma"))
-suppressMessages(BiocManager::install("Biobase"))
-suppressMessages(BiocManager::install("M3C"))
-suppressMessages(install.packages(c("pheatmap", "reshape2", "plyr", "ggplot2", "stringr", "ggfortify")))
+suppressMessages(BiocManager::install("GEOquery", force = TRUE))
+suppressMessages(BiocManager::install("limma", force = TRUE))
+suppressMessages(BiocManager::install("Biobase", force = TRUE))
+suppressMessages(BiocManager::install("M3C", force = TRUE))
 
 # Setting workingDirectory to project's directory 
 curD <- dirname(rstudioapi::getActiveDocumentContext()$path)
@@ -14,7 +29,6 @@ setwd(sub(paste0("/", sub("(.+)/","",curD)),"",curD))
 ######
 # Preparing Data
 ######
-series <- 'GSE48558'
 dataset <- getGEO(GEO = series,
     GSEMatrix = TRUE,
     AnnotGPL = TRUE,
@@ -22,3 +36,6 @@ dataset <- getGEO(GEO = series,
 )
 
 dataset <- dataset[[1]]
+
+
+saveRDS(dataset, output_file)
