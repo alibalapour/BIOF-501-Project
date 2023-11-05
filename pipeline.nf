@@ -1,5 +1,6 @@
 #!/usr/bin/env nextflow
 
+
 params.series = 'GSE48558'
 params.result_folder = 'Results'
 // greeting_ch = Channel.of(params.greeting)
@@ -8,14 +9,14 @@ params.result_folder = 'Results'
 
 process DOWNLOAD {
     input: 
-    path series
+    val series
 
-    output:
-    file 'output_table.rds' into data
+//    output:
+//    file 'output_table.rds' into data
 
     script:
     """
-    Rscript scripts/download.R $series output_table.rds
+    Rscript ./scripts/download.R $series output_table.rds
     """
 }
 
