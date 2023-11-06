@@ -8,6 +8,8 @@ params.result_folder = 'Results'
 
 
 process DOWNLOAD {
+    conda ''
+
     input: 
     val series
 
