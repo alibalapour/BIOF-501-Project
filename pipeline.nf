@@ -8,13 +8,10 @@ params.result_folder = 'Results'
 
 
 process DOWNLOAD {
-    conda ''
+    conda 'environment.yml'
 
     input: 
-    val series
-
-//    output:
-//    file 'output_table.rds' into data
+    val series 
 
     script:
     """
