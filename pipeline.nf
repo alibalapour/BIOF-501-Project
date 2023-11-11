@@ -2,7 +2,7 @@
 
 
 params.series = 'GSE48558'
-params.resultfolder = 'Results'
+params.result_folder = 'Results'
 // greeting_ch = Channel.of(params.greeting)
 
 
@@ -12,7 +12,7 @@ process DOWNLOAD {
 
     input: 
     val series 
-    val resultfolder
+    val result_folder
 
     script:
     """
@@ -42,6 +42,6 @@ process DOWNLOAD {
 // }
 
 workflow {
-    DOWNLOAD(params.series, params.resultfolder)
+    DOWNLOAD(params.series, params.result_folder)
 }
 
