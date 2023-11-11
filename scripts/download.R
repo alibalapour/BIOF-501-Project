@@ -2,7 +2,7 @@
 args <- commandArgs(trailingOnly = TRUE)
 
 # Check the number of arguments
-if (length(args) < 2) {
+if (length(args) < 1) {
     stop("Usage: Rscript download_data.R <series> <output_file>")
 }
 
