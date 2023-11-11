@@ -21,9 +21,15 @@ process DOWNLOAD {
     """
 }
 
-// process PREPROCESS {
+process PREPROCESS {
+    input: 
+    val result_folder
 
-// }
+    script:
+    """
+    Rscript $PWD/scripts/preprocess.R $PWD/$result_folder/output_table.rds
+    """
+}
 
 // process QUALITY_CONTROL {
 
@@ -43,5 +49,6 @@ process DOWNLOAD {
 
 workflow {
     DOWNLOAD(params.series, params.result_folder)
+    PREPROCESS(params.result_folder)
 }
 
