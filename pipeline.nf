@@ -8,7 +8,7 @@ params.result_folder = 'Results'
 
 
 process DOWNLOAD {
-    conda 'environment.yml'
+    conda 'requirements.txt'
 
     input: 
     val series 
