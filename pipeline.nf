@@ -15,7 +15,8 @@ process DOWNLOAD {
 
     script:
     """
-    Rscript $PWD/scripts/download.R $series output_table.rds
+    mkdir -p "$PWD/$result_folder"
+    Rscript $PWD/scripts/download.R $series "$PWD/$result_folder/output_table.rds"
     """
 }
 
