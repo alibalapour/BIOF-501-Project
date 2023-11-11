@@ -17,7 +17,7 @@ process DOWNLOAD {
     script:
     """
     mkdir -p "$PWD/$result_folder"
-    Rscript $PWD/scripts/download.R $series "$PWD/$result_folder/output_table.rds"
+    Rscript $PWD/scripts/download.R $series $PWD/$result_folder/output_table.rds
     """
 }
 
@@ -42,6 +42,6 @@ process DOWNLOAD {
 // }
 
 workflow {
-    DOWNLOAD(params.series)
+    DOWNLOAD(params.series, params.resultfolder)
 }
 
