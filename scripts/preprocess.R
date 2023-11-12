@@ -17,11 +17,11 @@ dataset <- readRDS(dataset_path)
 dataset = dataset[[1]]
 
 # Selecting Normal and Leukemia from dataset
-dataset <- dataset[, which(dataset$'phenotype:ch1' == 'Normal' | dataset$'phenotype:ch'` == 'Leukemia')]
+dataset <- dataset[, which(dataset$'phenotype:ch1' == 'Normal' | dataset$'phenotype:ch' == 'Leukemia')]
 
 # Function for grouping samples
 getGroup <- function(a){
-  if(dataset$`phenotype:ch1`[a] == "Normal"){
+  if(dataset$"phenotype:ch1"[a] == "Normal"){
     source_name = strsplit2(dataset$source_name_ch1[a], "\\+")[1, 1]
     return(paste0("normal_", source_name))  # we need source_name in the following
   }
@@ -31,6 +31,6 @@ getGroup <- function(a){
 }
 
 # Get group of each sample
-groupedSamples <- sapply(1:length(dataset$`phenotype:ch1`), getGroup)
+groupedSamples <- sapply(1:length(dataset$"phenotype:ch1"), getGroup)
 
 saveRDS(dataset, '../done.rds')
