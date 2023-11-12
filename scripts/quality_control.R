@@ -1,3 +1,6 @@
+suppressMessages(library("Biobase"))
+suppressMessages(library("limma"))
+
 # Access command-line arguments
 args <- commandArgs(trailingOnly = TRUE)
 
