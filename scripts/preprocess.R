@@ -14,7 +14,7 @@ dataset_path <- args[1]
 
 # Read saved dataset
 dataset <- readRDS(dataset_path)
-dataset = dataset[[1]]
+# dataset = dataset[[1]]
 
 # Selecting Normal and Leukemia from dataset
 dataset <- dataset[, which(dataset$'phenotype:ch1' == 'Normal' | dataset$'phenotype:ch' == 'Leukemia')]
