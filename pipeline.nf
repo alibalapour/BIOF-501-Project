@@ -55,7 +55,7 @@ process QUALITY_CONTROL {
 
 workflow {
     DOWNLOAD(params.series, params.result_folder)
-    // PREPROCESS(params.result_folder)
+    PREPROCESS(params.result_folder)
     QUALITY_CONTROL(params.result_folder)
 }
 
