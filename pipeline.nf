@@ -31,9 +31,15 @@ process PREPROCESS {
     """
 }
 
-// process QUALITY_CONTROL {
+process QUALITY_CONTROL {
+    input: 
+    val result_folder
 
-// }
+    script:
+    """
+    Rscript $PWD/scripts/quality_control.R $PWD/$result_folder/output_table.rds
+    """
+}
 
 // process PCA {
 
@@ -49,6 +55,7 @@ process PREPROCESS {
 
 workflow {
     DOWNLOAD(params.series, params.result_folder)
-    PREPROCESS(params.result_folder)
+    // PREPROCESS(params.result_folder)
+    QUALITY_CONTROL(params.result_folder)
 }
 
