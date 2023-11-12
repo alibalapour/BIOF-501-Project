@@ -17,7 +17,7 @@ dataset <- readRDS(dataset_path)
 dataset = dataset[[1]]
 
 # Selecting Normal and Leukemia from dataset
-dataset <- dataset[, which(dataset$`phenotype:ch1` == 'Normal' | dataset$`phenotype:ch1` == 'Leukemia')]
+dataset <- dataset[, which(dataset$'phenotype:ch1' == 'Normal' | dataset$'phenotype:ch'` == 'Leukemia')]
 
 # Function for grouping samples
 getGroup <- function(a){
