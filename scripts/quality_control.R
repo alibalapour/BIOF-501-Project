@@ -2,7 +2,7 @@
 args <- commandArgs(trailingOnly = TRUE)
 
 # Check the number of arguments
-if (length(args) < 2) {
+if (length(args) < 1) {
     stop("Usage: Rscript quality_control.R <dataset_path>")
 }
 
