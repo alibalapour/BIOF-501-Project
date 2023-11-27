@@ -11,8 +11,7 @@ if (length(args) < 3) {
 
 # Extract arguments
 dataset_path <- args[1]
-expr_mat_path <- args[2]
-box_plot_path <- args[3]
+result_dir_path <- args[2]
 
 
 # Read saved dataset
@@ -28,9 +27,9 @@ print(paste0("mean : ", mean(exprMatrix)))
 print(paste0("std : ", sd(exprMatrix)))
 
 # Save expression matrix
-saveRDS(dataset, expr_mat_path)
+saveRDS(dataset, file.path(result_dir_path, "expr_mat.rds"))
 
 # Save generated box plot on expression data
-png(box_plot_path, width = 1000, height = 500)
+png(file.path(result_dir_path, "expr_box_plot.png"), width = 1000, height = 500)
 boxplot(exprs(dataset))
 dev.off()

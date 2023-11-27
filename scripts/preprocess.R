@@ -11,7 +11,7 @@ if (length(args) < 2) {
 
 # Extract arguments
 dataset_path <- args[1]
-output_dataset_path <- args[2]
+result_dir_path <- args[2]
 
 # Read saved dataset
 dataset <- readRDS(dataset_path)
@@ -33,4 +33,4 @@ getGroup <- function(a){
 # Get group of each sample
 groupedSamples <- sapply(1:length(dataset$"phenotype:ch1"), getGroup)
 
-saveRDS(dataset, output_dataset_path)
+saveRDS(dataset, file.path(result_dir_path, "preprocessed_table.rds"))

@@ -38,7 +38,7 @@ process PREPROCESS {
 
     script:
     """
-    Rscript $PWD/scripts/preprocess.R $PWD/$result_folder/output_table.rds $PWD/$result_folder/preprocessed_table.rds
+    Rscript $PWD/scripts/preprocess.R $PWD/$result_folder/output_table.rds $PWD/$result_folder
     """
 }
 
@@ -55,7 +55,7 @@ process QUALITY_CONTROL {
 
     script:
     """
-    Rscript $PWD/scripts/quality_control.R $PWD/$result_folder/preprocessed_table.rds $PWD/$result_folder/expr_mat.rds $PWD/$result_folder/expr_box_plot.png
+    Rscript $PWD/scripts/quality_control.R $PWD/$result_folder/preprocessed_table.rds $PWD/$result_folder
     """
 }
 
