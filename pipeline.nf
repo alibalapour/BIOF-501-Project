@@ -92,9 +92,21 @@ process CORRELATION {
     """
 }
 
-// process SIGNIFICANT_DIFFERENCE {
+process SIGNIFICANT_DIFFERENCE {
+    conda '/home/jupyter-alibalapour93.ab/.conda/envs/r_env'
 
-// }
+    input: 
+    val result_folder
+    val _
+
+    output:
+        val ""
+
+    script:
+    """
+    Rscript $PWD/scripts/significant_difference.R $PWD/$result_folder/preprocessed_table.rds $PWD/$result_folder
+    """
+}
 
 
 workflow {
@@ -104,5 +116,6 @@ workflow {
     next = QUALITY_CONTROL(params.result_folder, next)
     next = PCA(params.result_folder, next)
     next = CORRELATION(params.result_folder, next)
+    next = SIGNIFICANT_DIFFERENCE(params.result_folder, next)
 }
 
