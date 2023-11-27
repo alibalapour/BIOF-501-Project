@@ -22,9 +22,11 @@ result_dir_path <- args[2]
 # Read saved dataset
 dataset <- readRDS(dataset_path)
 groupedSamples <- readRDS(file.path(result_dir_path, "grouped_samples.rds"))
+exprMatrix <- readRDS(file.path(result_dir_path, "expr_mat.rds"))
 
 # Generate UMAP and PCA
 umap_plot <- umap(exprMatrix, dotsize = 3, labels = groupedSamples)
+pca_res <- prcomp(exprMatrix, scale. = TRUE)
 pcar <- data.frame(pca_res$rotation [,1:3] , group = groupedSamples)
 
 
