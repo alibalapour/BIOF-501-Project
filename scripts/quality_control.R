@@ -15,6 +15,7 @@ dataset_path <- args[1]
 # Read saved dataset
 dataset <- readRDS(dataset_path)
 
+# Generate expression matrix
 exprMatrix = exprs(dataset)
 
 # calculating statistics
@@ -23,4 +24,10 @@ print(paste0("min : ", min(exprMatrix)))
 print(paste0("mean : ", mean(exprMatrix)))
 print(paste0("std : ", sd(exprMatrix)))
 
-# boxplot(exprs(dataset))
+# Save expression matrix
+saveRDS(dataset, "Results/expr_mat")
+
+# Save generated box plot on expression data
+png("Results/expr_box_plot.png", width = 1000, height = 500)
+boxplot(exprs(dataset))
+dev.off()
