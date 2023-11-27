@@ -19,6 +19,6 @@ exprMatrix <- readRDS(exprMatrix_path)
 pca_res <- prcomp(exprMatrix, scale. = TRUE)
 autoplot(pca_res)
 
-png("Results/pca_barchart.png", width = 1000, height = 500)
+png(pca_bar_plot_path, width = 1000, height = 500)
 plot(pca_res)
 dev.off()
