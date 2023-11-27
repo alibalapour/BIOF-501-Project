@@ -63,6 +63,7 @@ process PCA {
     conda '/home/jupyter-alibalapour93.ab/.conda/envs/r_env'
 
     input: 
+    val result_folder
     val _
 
     output:
@@ -89,6 +90,6 @@ workflow {
     // next = DOWNLOAD(params.series, params.result_folder, next)
     next = PREPROCESS(params.result_folder, next)
     next = QUALITY_CONTROL(params.result_folder, next)
-    next = PCA(next)
+    next = PCA(params.result_folder, next)
 }
 
