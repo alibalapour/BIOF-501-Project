@@ -42,5 +42,5 @@ dev.off()
 
 # tSNE plot with labels
 png(file.path(result_dir_path, "umap_scatter_plot.png"), width = 512, height = 512)
-umap_plot <- umap(exprMatrix, dotsize = 3, labels = groupedSamples)
+umap(exprMatrix, dotsize = 3, labels = groupedSamples)
 dev.off()
