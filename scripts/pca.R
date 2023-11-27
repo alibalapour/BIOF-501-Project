@@ -11,14 +11,29 @@ if (length(args) < 1) {
 
 # Extract arguments
 exprMatrix_path <- args[1]
-pca_bar_plot_path <- args[2]
+result_dir_path <- args[2]
 
 # Read saved dataset
 exprMatrix <- readRDS(exprMatrix_path)
 
 pca_res <- prcomp(exprMatrix, scale. = TRUE)
+png(file.path(result_dir_path, "pca_barchart.png"), width = 1000, height = 500)
 autoplot(pca_res)
-
-png(pca_bar_plot_path, width = 1000, height = 500)
 plot(pca_res)
+dev.off()
+
+# PCA plot with labels
+png(file.path(result_dir_path, "pca_scatter_plot.png"), width = 512, height = 512)
+pcar <- data.frame(pca_res$rotation [,1:3] , group = groupedSamples)
+ggplot(pcar , aes(PC1 , PC2 , color = group , size = 4)) + geom_point()+ theme_bw()
+dev.off()
+
+# tSNE plot with labels
+png(file.path(result_dir_path, "tsne_scatter_plot.png"), width = 512, height = 512)
+tsne(exprMatrix, dotsize = 3, labels = groupedSamples)
+dev.off()
+
+# tSNE plot with labels
+png(file.path(result_dir_path, "umap_scatter_plot.png"), width = 512, height = 512)
+umap_plot <- umap(exprMatrix, dotsize = 3, labels = groupedSamples)
 dev.off()

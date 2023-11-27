@@ -71,7 +71,7 @@ process PCA {
 
     script:
     """
-    Rscript $PWD/scripts/pca.R $PWD/$result_folder/expr_mat.rds $PWD/$result_folder/pca_barchart.png
+    Rscript $PWD/scripts/pca.R $PWD/$result_folder/expr_mat.rds $PWD/$result_folder
     """
 
 }
