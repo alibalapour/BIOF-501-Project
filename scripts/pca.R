@@ -23,11 +23,8 @@ result_dir_path <- args[2]
 exprMatrix <- readRDS(exprMatrix_path)
 groupedSamples <- readRDS(file.path(result_dir_path, "grouped_samples.rds"))
 
+# Extract principle components
 pca_res <- prcomp(exprMatrix, scale. = TRUE)
-# png(file.path(result_dir_path, "pca_barchart.png"), width = 1000, height = 500)
-# autoplot(pca_res)
-# plot(pca_res)
-# dev.off()
 
 # PCA plot with labels
 png(file.path(result_dir_path, "pca_scatter_plot.png"), width = 512, height = 512)
