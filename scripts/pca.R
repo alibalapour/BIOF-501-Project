@@ -5,8 +5,8 @@ library(ggplot2)
 args <- commandArgs(trailingOnly = TRUE)
 
 # Check the number of arguments
-if (length(args) < 1) {
-    stop("Usage: Rscript preprocess.R <dataset_path>")
+if (length(args) < 2) {
+    stop("Usage: Rscript pca.R <exprMatrix_path> <result_dir_path>")
 }
 
 # Extract arguments

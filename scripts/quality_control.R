@@ -5,8 +5,8 @@ suppressMessages(library("limma"))
 args <- commandArgs(trailingOnly = TRUE)
 
 # Check the number of arguments
-if (length(args) < 3) {
-    stop("Usage: Rscript quality_control.R <dataset_path>")
+if (length(args) < 2) {
+    stop("Usage: Rscript quality_control.R <dataset_path> <result_dir_path>")
 }
 
 # Extract arguments
