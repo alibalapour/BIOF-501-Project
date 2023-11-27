@@ -34,3 +34,4 @@ getGroup <- function(a){
 groupedSamples <- sapply(1:length(dataset$"phenotype:ch1"), getGroup)
 
 saveRDS(dataset, file.path(result_dir_path, "preprocessed_table.rds"))
+saveRDS(groupedSamples, file.path(result_dir_path, "grouped_samples.rds"))
