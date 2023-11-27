@@ -12,7 +12,7 @@ args <- commandArgs(trailingOnly = TRUE)
 
 # Check the number of arguments
 if (length(args) < 2) {
-    stop("Usage: Rscript pca.R <dataset_path> <result_dir_path>")
+    stop("Usage: Rscript significant_difference.R <dataset_path> <result_dir_path>")
 }
 
 # Extract arguments
@@ -20,7 +20,7 @@ dataset_path <- args[1]
 result_dir_path <- args[2]
 
 # Read saved dataset
-dataset <- readRDS(exprMatrix_path)
+dataset <- readRDS(dataset_path)
 groupedSamples <- readRDS(file.path(result_dir_path, "grouped_samples.rds"))
 
 # Generate UMAP and PCA
@@ -51,7 +51,7 @@ fit2 <- eBayes(fit2, 0.01)
 tT <- topTable(fit2, adjust="fdr", sort.by="B", number=250)
 
 tT <- subset(tT, select=c("Gene.symbol" , "Gene.title", "adj.P.Val" , "logFC"))
-write.table(tT, file='Results/stat_table.txt', row.names=F, sep="\t")
+write.table(tT, file=file.path(result_dir_path, 'stat_table.txt'), row.names=F, sep="\t")
 
 table_subset <- subset(tT , logFC > 1 & adj.P.Val < 0.05)
 genes_1 <-unique( as.character(strsplit2( (table_subset$Gene.symbol),"///")))
