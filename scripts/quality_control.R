@@ -25,7 +25,7 @@ print(paste0("mean : ", mean(exprMatrix)))
 print(paste0("std : ", sd(exprMatrix)))
 
 # Save expression matrix
-saveRDS(dataset, "Results/expr_mat")
+saveRDS(dataset, "Results/expr_mat.rds")
 
 # Save generated box plot on expression data
 png("Results/expr_box_plot.png", width = 1000, height = 500)
