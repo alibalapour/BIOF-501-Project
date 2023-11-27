@@ -5,12 +5,15 @@ suppressMessages(library("limma"))
 args <- commandArgs(trailingOnly = TRUE)
 
 # Check the number of arguments
-if (length(args) < 1) {
+if (length(args) < 3) {
     stop("Usage: Rscript quality_control.R <dataset_path>")
 }
 
 # Extract arguments
 dataset_path <- args[1]
+expr_mat_path <- args[2]
+box_plot_path <- args[3]
+
 
 # Read saved dataset
 dataset <- readRDS(dataset_path)
@@ -25,9 +28,9 @@ print(paste0("mean : ", mean(exprMatrix)))
 print(paste0("std : ", sd(exprMatrix)))
 
 # Save expression matrix
-saveRDS(dataset, "Results/expr_mat.rds")
+saveRDS(dataset, expr_mat_path)
 
 # Save generated box plot on expression data
-png("Results/expr_box_plot.png", width = 1000, height = 500)
+png(box_plot_path, width = 1000, height = 500)
 boxplot(exprs(dataset))
 dev.off()

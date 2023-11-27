@@ -5,12 +5,13 @@ suppressMessages(library("limma"))
 args <- commandArgs(trailingOnly = TRUE)
 
 # Check the number of arguments
-if (length(args) < 1) {
+if (length(args) < 2) {
     stop("Usage: Rscript preprocess.R <dataset_path>")
 }
 
 # Extract arguments
 dataset_path <- args[1]
+output_dataset_path <- args[2]
 
 # Read saved dataset
 dataset <- readRDS(dataset_path)
@@ -32,4 +33,4 @@ getGroup <- function(a){
 # Get group of each sample
 groupedSamples <- sapply(1:length(dataset$"phenotype:ch1"), getGroup)
 
-saveRDS(dataset, '../done.rds')
+saveRDS(dataset, output_dataset_path)

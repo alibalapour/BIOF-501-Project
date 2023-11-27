@@ -38,7 +38,7 @@ process PREPROCESS {
 
     script:
     """
-    Rscript $PWD/scripts/preprocess.R $PWD/$result_folder/output_table.rds
+    Rscript $PWD/scripts/preprocess.R $PWD/$result_folder/output_table.rds $PWD/$result_folder/preprocessed_table.rds
     """
 }
 
@@ -55,7 +55,7 @@ process QUALITY_CONTROL {
 
     script:
     """
-    Rscript $PWD/scripts/quality_control.R $PWD/$result_folder/output_table.rds
+    Rscript $PWD/scripts/quality_control.R $PWD/$result_folder/preprocessed_table.rds $PWD/$result_folder/expr_mat.rds $PWD/$result_folder/expr_box_plot.png
     """
 }
 
@@ -74,7 +74,7 @@ process QUALITY_CONTROL {
 
 workflow {
     next = ""
-    next = DOWNLOAD(params.series, params.result_folder, next)
+    // next = DOWNLOAD(params.series, params.result_folder, next)
     next = PREPROCESS(params.result_folder, next)
     next = QUALITY_CONTROL(params.result_folder, next)
 }
