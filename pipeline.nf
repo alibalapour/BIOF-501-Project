@@ -76,9 +76,21 @@ process PCA {
 
 }
 
-// process CORRELATION {
-    
-// }
+process CORRELATION {
+    conda '/home/jupyter-alibalapour93.ab/.conda/envs/r_env'
+
+    input: 
+    val result_folder
+    val _
+
+    output:
+        val ""
+
+    script:
+    """
+    Rscript $PWD/scripts/correlation.R $PWD/$result_folder/expr_mat.rds $PWD/$result_folder
+    """
+}
 
 // process SIGNIFICANT_DIFFERENCE {
 
@@ -91,5 +103,6 @@ workflow {
     next = PREPROCESS(params.result_folder, next)
     next = QUALITY_CONTROL(params.result_folder, next)
     next = PCA(params.result_folder, next)
+    next = CORRELATION(params.result_folder, next)
 }
 
