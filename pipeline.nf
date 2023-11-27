@@ -59,9 +59,21 @@ process QUALITY_CONTROL {
     """
 }
 
-// process PCA {
+process PCA {
+    conda '/home/jupyter-alibalapour93.ab/.conda/envs/r_env'
 
-// }
+    input: 
+    val _
+
+    output:
+        val ""
+
+    script:
+    """
+    Rscript $PWD/scripts/pca.R $PWD/$result_folder/expr_mat.rds $PWD/$result_folder/pca_barchart.png
+    """
+
+}
 
 // process CORRELATION {
     
@@ -77,5 +89,6 @@ workflow {
     // next = DOWNLOAD(params.series, params.result_folder, next)
     next = PREPROCESS(params.result_folder, next)
     next = QUALITY_CONTROL(params.result_folder, next)
+    next = PCA(next)
 }
 
