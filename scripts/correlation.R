@@ -1,11 +1,11 @@
 suppressMessages(library("Biobase"))
 suppressMessages(library(plyr))
 suppressMessages(library(ggplot2))
-library(pheatmap)
-library(reshape2)
-library(plyr)
-library(ggfortify)
-library(M3C)
+suppressMessages(library(pheatmap))
+suppressMessages(library(reshape2))
+suppressMessages(library(plyr))
+suppressMessages(library(ggfortify))
+suppressMessages(library(M3C))
 
 # Access command-line arguments
 args <- commandArgs(trailingOnly = TRUE)

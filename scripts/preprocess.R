@@ -1,4 +1,4 @@
-BiocManager::install("Biobase", force = TRUE)
+suppressMessages(BiocManager::install("Biobase", force = TRUE))
 suppressMessages(BiocManager::install("limma", force = TRUE))
 
 suppressMessages(library("Biobase"))

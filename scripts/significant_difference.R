@@ -1,13 +1,13 @@
-library(GEOquery)
-library(limma)
-library(Biobase)
-library(pheatmap)
-library(reshape2)
-library(plyr)
-library(ggplot2)
-library(stringr)
-library(ggfortify)
-library(M3C)
+suppressMessages(library(GEOquery))
+suppressMessages(library(limma))
+suppressMessages(library(Biobase))
+suppressMessages(library(pheatmap))
+suppressMessages(library(reshape2))
+suppressMessages(library(plyr))
+suppressMessages(library(ggplot2))
+suppressMessages(library(stringr))
+suppressMessages(library(ggfortify))
+suppressMessages(library(M3C))
 
 
 # Access command-line arguments
