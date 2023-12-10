@@ -35,6 +35,9 @@ output_file <- args[2]
 ######
 # Import packages
 ######
+if (!require("BiocManager", quietly = TRUE))
+  suppressMessages(install.packages("BiocManager", force = TRUE, repos='http://cran.us.r-project.org', version = '3.18'))
+suppressMessages(BiocManager::install("GEOquery", force = TRUE))
 library(GEOquery)
 
 ######
