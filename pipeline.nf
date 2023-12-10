@@ -8,7 +8,7 @@ params.result_folder = 'Results'
 
 
 process DOWNLOAD {
-    conda '/home/jupyter-alibalapour93.ab/.conda/envs/r_env'
+    conda 'environment.yml'
 
     input: 
     val series 
@@ -26,7 +26,7 @@ process DOWNLOAD {
 }
 
 process PREPROCESS {
-    conda '/home/jupyter-alibalapour93.ab/.conda/envs/r_env'
+    conda 'environment.yml'
 
     input: 
     val result_folder
@@ -43,7 +43,7 @@ process PREPROCESS {
 }
 
 process QUALITY_CONTROL {
-    conda '/home/jupyter-alibalapour93.ab/.conda/envs/r_env'
+    conda 'environment.yml'
 
     input: 
     val result_folder
@@ -60,7 +60,7 @@ process QUALITY_CONTROL {
 }
 
 process PCA {
-    conda '/home/jupyter-alibalapour93.ab/.conda/envs/r_env'
+    conda 'environment.yml'
 
     input: 
     val result_folder
@@ -77,7 +77,7 @@ process PCA {
 }
 
 process CORRELATION {
-    conda '/home/jupyter-alibalapour93.ab/.conda/envs/r_env'
+    conda 'environment.yml'
 
     input: 
     val result_folder
@@ -93,7 +93,7 @@ process CORRELATION {
 }
 
 process SIGNIFICANT_DIFFERENCE {
-    conda '/home/jupyter-alibalapour93.ab/.conda/envs/r_env'
+    conda 'environment.yml'
 
     input: 
     val result_folder
@@ -111,7 +111,7 @@ process SIGNIFICANT_DIFFERENCE {
 
 workflow {
     next = ""
-    // next = DOWNLOAD(params.series, params.result_folder, next)
+    next = DOWNLOAD(params.series, params.result_folder, next)
     next = PREPROCESS(params.result_folder, next)
     next = QUALITY_CONTROL(params.result_folder, next)
     next = PCA(params.result_folder, next)

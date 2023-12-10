@@ -1,6 +1,12 @@
-suppressMessages(library("Biobase"))
-suppressMessages(library(plyr))
-suppressMessages(library(ggplot2))
+suppressMessages(BiocManager::install("GEOquery", force = TRUE))
+suppressMessages(BiocManager::install("M3C", force = TRUE))
+suppressMessages(install.packages("pheatmap", repos = "http://cran.us.r-project.org"))
+suppressMessages(install.packages("ggfortify", repos = "http://cran.us.r-project.org"))
+
+
+library("Biobase")
+library(plyr)
+library(ggplot2)
 library(pheatmap)
 library(reshape2)
 library(plyr)

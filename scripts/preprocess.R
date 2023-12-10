@@ -1,3 +1,8 @@
+if (!require("BiocManager", quietly = TRUE))
+  suppressMessages(install.packages("BiocManager", force = TRUE, repos='http://cran.us.r-project.org', version = '3.18'))
+BiocManager::install("Biobase", force = TRUE)
+suppressMessages(BiocManager::install("limma", force = TRUE))
+
 suppressMessages(library("Biobase"))
 suppressMessages(library("limma"))
 
