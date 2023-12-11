@@ -26,13 +26,13 @@ $ sudo mv nextflow /usr/local/bin
 git clone https://github.com/alibalapour/BIOF-501-Project.git
 ```
 
-1. Go to the repository directory:
+2. Go to the repository directory:
 
 ```bash
 cd BIOF-501-Project
 ```
 
-1. As there is an `enivronment.yml` file in the repository, you don’t need to create a virtual environment. The pipeline itself creates a conda environment and installs required R packages. Run the pipeline by this command:
+3. As there is an `enivronment.yml` file in the repository, you don’t need to create a virtual environment. The pipeline itself creates a conda environment and installs required R packages. Run the pipeline by this command:
 
 ```bash
 nextflow run pipeline.nf
@@ -54,7 +54,7 @@ If there is any problem related to the R BiocManager package or installing packa
 conda create -n r_env r-essentials r-base
 ```
 
-1. Activate and get conda environment path by using this: 
+2. Activate and get conda environment path by using this: 
 
 ```bash
 conda activate r_env
@@ -63,13 +63,13 @@ echo $CONDA_PREFIX
 
 Assume path of environment is `$env_path`.
 
-1. Open R:
+3. Open R:
 
 ```bash
 R
 ```
 
-1. Run below commands inside R terminal:
+4. Run below commands inside R terminal:
 
 ```r
 suppressMessages(install.packages("BiocManager", force = TRUE, repos='http://cran.us.r-project.org', version = '3.18'))
@@ -79,14 +79,14 @@ suppressMessages(BiocManager::install("Biobase", force = TRUE))
 suppressMessages(BiocManager::install("M3C", force = TRUE))
 ```
 
-1. Exit R by running this command inside R: 
+5. Exit R by running this command inside R: 
 
 ```r
 exit()
 ```
 
-1. Inside nextflow pipeline file (`pipeline.nf`), change every `conda "environment.yml"` to `conda “[$env_path]”` . Note that `$env_path` is from step 2.
-2. Run the pipeline: 
+6. Inside nextflow pipeline file (`pipeline.nf`), change every `conda "environment.yml"` to `conda “[$env_path]”` . Note that `$env_path` is from step 2.
+7. Run the pipeline: 
 
 ```bash
 nextflow run pipeline.nf
