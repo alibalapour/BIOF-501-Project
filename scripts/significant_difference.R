@@ -1,4 +1,3 @@
-suppressMessages(library(GEOquery))
 suppressMessages(library(limma))
 suppressMessages(library(Biobase))
 suppressMessages(library(pheatmap))
@@ -20,12 +19,14 @@ if (length(args) < 2) {
 
 # Extract arguments
 dataset_path <- args[1]
-result_dir_path <- args[2]
+exprMatrix_path <- args[2]
+grouped_samples_path <- args[3]
+result_dir_path <- args[4]
 
 # Read saved dataset
 dataset <- readRDS(dataset_path)
-groupedSamples <- readRDS(file.path(result_dir_path, "grouped_samples.rds"))
-exprMatrix <- readRDS(file.path(result_dir_path, "expr_mat.rds"))
+exprMatrix <- readRDS(exprMatrix_path)
+groupedSamples <- readRDS(grouped_samples_path)
 
 # Generate UMAP and PCA
 umap_plot <- umap(exprMatrix, dotsize = 3, labels = groupedSamples)

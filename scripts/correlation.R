@@ -17,11 +17,12 @@ if (length(args) < 2) {
 
 # Extract arguments
 exprMatrix_path <- args[1]
-result_dir_path <- args[2]
+grouped_samples_path <- args[2]
+result_dir_path <- args[3]
 
 # Read saved dataset
 exprMatrix <- readRDS(exprMatrix_path)
-groupedSamples <- readRDS(file.path(result_dir_path, "grouped_samples.rds"))
+groupedSamples <- readRDS(grouped_samples_path)
 
 png(file.path(result_dir_path, "heatmap.png") , width = 1000, height = 1000)
 pheatmap(cor(exprMatrix), labels_row = groupedSamples, labels_col = groupedSamples)

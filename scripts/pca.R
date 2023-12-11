@@ -1,9 +1,3 @@
-suppressMessages(BiocManager::install("GEOquery", force = TRUE))
-suppressMessages(BiocManager::install("M3C", force = TRUE))
-suppressMessages(install.packages("pheatmap", repos = "http://cran.us.r-project.org"))
-suppressMessages(install.packages("ggfortify", repos = "http://cran.us.r-project.org"))
-
-
 suppressMessages(library("Biobase"))
 suppressMessages(library(plyr))
 suppressMessages(library(ggplot2))
@@ -23,11 +17,12 @@ if (length(args) < 2) {
 
 # Extract arguments
 exprMatrix_path <- args[1]
-result_dir_path <- args[2]
+grouped_samples_path <- args[2]
+result_dir_path <- args[3]
 
 # Read saved dataset
 exprMatrix <- readRDS(exprMatrix_path)
-groupedSamples <- readRDS(file.path(result_dir_path, "grouped_samples.rds"))
+groupedSamples <- readRDS(grouped_samples_path)
 
 # Extract principle components
 pca_res <- prcomp(exprMatrix, scale. = TRUE)

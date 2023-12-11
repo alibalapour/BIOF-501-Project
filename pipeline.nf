@@ -4,8 +4,6 @@ nextflow.enable.dsl=2
 
 params.series = 'GSE48558'
 params.result_folder = 'Results'
-// greeting_ch = Channel.of(params.greeting)
-
 
 process DOWNLOAD {
     conda 'environment.yml'
@@ -16,7 +14,7 @@ process DOWNLOAD {
     val _
   
     output:
-        val ""
+        val("${PWD}/${result_folder}/output_table.rds"), emit: output_rds
 
     script:
     """
@@ -30,15 +28,15 @@ process PREPROCESS {
 
     input: 
     val result_folder
-    val _
+    val output_rds
 
     output:
-        val ""
-
+        val("${PWD}/${result_folder}/preprocessed_table.rds"), emit: preprocessed_table_rds
+        val("${PWD}/${result_folder}/grouped_samples.rds"), emit: grouped_samples_rds
 
     script:
     """
-    Rscript $PWD/scripts/preprocess.R $PWD/$result_folder/output_table.rds $PWD/$result_folder
+    Rscript $PWD/scripts/preprocess.R $output_rds $PWD/$result_folder
     """
 }
 
@@ -47,15 +45,14 @@ process QUALITY_CONTROL {
 
     input: 
     val result_folder
-    val _
+    val preprocessed_dataset_path
 
     output:
-        val ""
-
+        val("${PWD}/${result_folder}/expr_mat.rds"), emit: expr_mat_rds
 
     script:
     """
-    Rscript $PWD/scripts/quality_control.R $PWD/$result_folder/preprocessed_table.rds $PWD/$result_folder
+    Rscript $PWD/scripts/quality_control.R $preprocessed_dataset_path $PWD/$result_folder
     """
 }
 
@@ -64,14 +61,15 @@ process PCA {
 
     input: 
     val result_folder
-    val _
+    val expr_mat_path
+    val grouped_sample_path
 
     output:
-        val ""
+        val(""), emit: pca_output
 
     script:
     """
-    Rscript $PWD/scripts/pca.R $PWD/$result_folder/expr_mat.rds $PWD/$result_folder
+    Rscript $PWD/scripts/pca.R $expr_mat_path $grouped_sample_path $PWD/$result_folder
     """
 
 }
@@ -81,14 +79,15 @@ process CORRELATION {
 
     input: 
     val result_folder
-    val _
+    val expr_mat_path
+    val grouped_sample_path
 
     output:
         val ""
 
     script:
     """
-    Rscript $PWD/scripts/correlation.R $PWD/$result_folder/expr_mat.rds $PWD/$result_folder
+    Rscript $PWD/scripts/correlation.R $expr_mat_path $grouped_sample_path $PWD/$result_folder
     """
 }
 
@@ -97,25 +96,27 @@ process SIGNIFICANT_DIFFERENCE {
 
     input: 
     val result_folder
-    val _
+    val preprocessed_dataset_path
+    val expr_mat_path
+    val grouped_sample_path
 
     output:
         val ""
 
     script:
     """
-    Rscript $PWD/scripts/significant_difference.R $PWD/$result_folder/preprocessed_table.rds $PWD/$result_folder
+    Rscript $PWD/scripts/significant_difference.R $preprocessed_dataset_path $expr_mat_path $grouped_sample_path $PWD/$result_folder
     """
 }
 
 
 workflow {
     next = ""
-    next = DOWNLOAD(params.series, params.result_folder, next)
-    next = PREPROCESS(params.result_folder, next)
-    next = QUALITY_CONTROL(params.result_folder, next)
-    next = PCA(params.result_folder, next)
-    next = CORRELATION(params.result_folder, next)
-    next = SIGNIFICANT_DIFFERENCE(params.result_folder, next)
+    dataset_path = DOWNLOAD(params.series, params.result_folder, next)
+    (preprocessed_dataset_path, grouped_sample_path) = PREPROCESS(params.result_folder, dataset_path)
+    expr_mat_path = QUALITY_CONTROL(params.result_folder, preprocessed_dataset_path)
+    PCA(params.result_folder, expr_mat_path, grouped_sample_path)
+    CORRELATION(params.result_folder, expr_mat_path, grouped_sample_path)
+    SIGNIFICANT_DIFFERENCE(params.result_folder, preprocessed_dataset_path, expr_mat_path, grouped_sample_path)
 }
 

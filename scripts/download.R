@@ -19,6 +19,13 @@ output_file <- args[2]
 ######
 if (!require("BiocManager", quietly = TRUE))
   suppressMessages(install.packages("BiocManager", force = TRUE, repos='http://cran.us.r-project.org', version = '3.18'))
+
+suppressMessages(BiocManager::install("GEOquery", force = TRUE))
+suppressMessages(BiocManager::install("M3C", force = TRUE))
+suppressMessages(install.packages("pheatmap", repos = "http://cran.us.r-project.org"))
+suppressMessages(install.packages("ggfortify", repos = "http://cran.us.r-project.org"))
+
+
 suppressMessages(BiocManager::install("GEOquery", force = TRUE))
 library(GEOquery)
 
