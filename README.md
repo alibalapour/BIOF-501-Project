@@ -1,4 +1,4 @@
-# BIOf 501 Project: Detecting Acute Myeloid Leukemia (AML) by using microarray gene expression data
+# BIOf 501 Project: Detecting Acute Myeloid Leukemia by using microarray gene expression data
 
 # Background
 
