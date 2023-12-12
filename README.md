@@ -79,7 +79,8 @@ nextflow run pipeline.nf
 
 
 # Troubleshooting
-[a relative link](troubleshooting.md)
+Please read this troubleshooting markdown if you have any problems in running the pipeline:
+[Troubleshooting](troubleshooting.md)
 
 
 # References
