@@ -34,11 +34,11 @@ ggplot(pcar , aes(PC1 , PC2 , color = group , size = 4)) + geom_point()+ theme_b
 dev.off()
 
 # tSNE plot with labels
-png(file.path(result_dir_path, "tsne_scatter_plot.png"), width = 512, height = 512)
+png(file.path(result_dir_path, "tsne_scatter_plot.png"), width = 768, height = 512)
 tsne(exprMatrix, dotsize = 3, labels = groupedSamples, printheight = 20, printwidth = 22,scale = 1)
 dev.off()
 
 # tSNE plot with labels
-png(file.path(result_dir_path, "umap_scatter_plot.png"), width = 512, height = 512)
+png(file.path(result_dir_path, "umap_scatter_plot.png"), width = 768, height = 512)
 umap(exprMatrix, dotsize = 3, labels = groupedSamples, printheight = 20, printwidth = 22,scale = 1)
 dev.off()
