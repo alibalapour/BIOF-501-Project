@@ -66,7 +66,7 @@ genes_2 <- unique(as.character(strsplit2((table_subset$Gene.symbol),"///")))
 
 write.table(
   genes_1,
-  file.path(result_dir_path, "genes_1.txt"),
+  file.path(result_dir_path, "over-expressed genes.txt"),
   quote = FALSE,
   row.names = FALSE,
   col.names = FALSE
@@ -74,7 +74,7 @@ write.table(
 
 write.table(
   genes_2,
-  file.path(result_dir_path, "genes_2.txt"),
+  file.path(result_dir_path, "under-expressed genes.txt"),
   quote = FALSE,
   row.names = FALSE,
   col.names = FALSE
