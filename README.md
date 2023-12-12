@@ -70,12 +70,40 @@ cd BIOF-501-Project
 nextflow run pipeline.nf
 ```
 
-### Input data
+## Input data
 
-### Output data
+The analysis uses microarray data obtained from the [GSE48558 series](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE48558). The data is automatically downloaded during the `DOWNLOAD` process and saved in the `Results` directory. Throughout various processes, intermediate outputs like expression matrices and PCA outputs will be generated and saved in the same `Results` directory. The tabular data is saved in the `rds` format, which is the standard format of the R programming language for datasets.
 
+## Output data
+
+The `Results` directory will contain the initial dataset, intermediate datasets, and final outputs. The desired outputs for this project are:
+
+- A 2D plot showing the PCA output of expression data for each sample, categorized by sample type.
+- A 2D plot displaying the t-SNE output of expression data for each sample, categorized by sample type.
+- A 2D plot illustrating the umap output of expression data for each sample, categorized by sample type.
+- A correlation heatmap showing the relationships between samples based on expression.
+- A list of genes that are over-expressed.
+- A list of genes that are under-expressed.
 
 # Results
+
+## PCA
+
+In the PCA step of the pipeline, three most frequent principle component analysis methods (PCA, t-SNE, umap) are applied on expression matrix of the samples to generate 2 principle components of the data in order to visualize on a 2D scatter plot. You can find results in `Results` directory after running the pipeline. 
+
+[3 plots for PCA]
+
+As you can see, all three methods discriminate samples based on different types really well. In general, performance of umap is slightly better, so this method will be selected for next steps.
+
+## Correlation
+
+In order to investigate relationship among samples of different types, the correlation among these samples are calculated and a heatmap is plotted. You can see results in the next figure.
+
+[correlation plot]
+
+## Significant Genes
+
+In order to find genes that are potentially effective in the AML, a group of samples from both types (normal and patient) are selected based on umap plot. Then by using lmfit from limma package, a linear model is fitted on the data. This model will generate a table (`stat_table.txt`) that has adjusted p-value and log fold change for each gene. Based on these two values, two groups of genes are extracted which the first one contains over-expressed genes and second one includes under-expressed ones. You can find outputs files in `over-expressed genes.txt` and `under-expressed genes.txt` files inside `Results` directory.
 
 
 # Troubleshooting
