@@ -74,9 +74,13 @@ nextflow run pipeline.nf
 
 ### Output data
 
-## Troubleshooting
 
-### 1. R packages not installed properly
+# Results
+
+
+# Troubleshooting
+
+## 1. R packages not installed properly
 
 If there is any problem related to the R BiocManager package or installing packages like GEOquery, limma, Biobase, and M3C, we need to create a conda virtual environment from scratch and install mentioned packages as instructed below.
 
@@ -124,8 +128,8 @@ exit()
 nextflow run pipeline.nf
 ```
 
-### 2. Data is not downloaded properly
+## 2. Data is not downloaded properly
 
-# Results
+
 
 # References
