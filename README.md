@@ -122,3 +122,5 @@ Please read this troubleshooting markdown if you have any problems in running th
 
 
 # References
+- Cramer-Morales K, Nieborowska-Skorska M, Scheibner K, Padget M et al. Personalized synthetic lethality induced by targeting RAD52 in leukemias identified by gene mutation and expression profile. Blood 2013 Aug 15;122(7):1293-304. PMID: 23836560
+- 
