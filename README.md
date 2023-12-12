@@ -91,13 +91,13 @@ The `Results` directory will contain the initial dataset, intermediate datasets,
 
 In the PCA step of the pipeline, three most frequent principle component analysis methods (PCA, t-SNE, umap) are applied on expression matrix of the samples to generate 2 principle components of the data in order to visualize on a 2D scatter plot. You can find results in `Results` directory after running the pipeline. 
 
-- Output of PCA:
+- Output of PCA: \
 ![Output of PCA](figures/pca_scatter_plot.png)
 
-- Output of tSNE:
+- Output of tSNE: \
 ![Output of t-SNE](figures/tsne_scatter_plot.png)
 
-- Output of umap
+- Output of umap: \
 ![Output of umap](figures/umap_scatter_plot.png)
 
 
