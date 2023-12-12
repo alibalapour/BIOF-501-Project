@@ -50,6 +50,23 @@ $ sudo mv nextflow /usr/local/bin
 
 - Conda - [installation guide](https://docs.conda.io/projects/conda/en/latest/user-guide/install/macos.html)
 
+Furthermore, in the first process required packages are installed automatically. These packages are used inside R scripts:
+- BiocManager
+- GEOquery
+- M3C
+- Biobase
+- limma
+- pheatmap
+- ggfortify
+- reshape2
+- plyr
+- ggplot2
+- stringr
+- ggfortify
+
+If there is a problem realted to lack of these pacakges in the R, please read [Troubleshooting](troubleshooting.md).
+
+
 ## Run
 
 1. Clone the repository:
