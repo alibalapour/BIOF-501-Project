@@ -47,5 +47,3 @@ exit()
 ```bash
 nextflow run pipeline.nf
 ```
-
-## 2. Data is not downloaded properly
