@@ -34,6 +34,9 @@ In this pipeline, we are using microarray data from samples with and without AML
 First, we need to download the data. The selected data is from the [GEO Accession viewer (nih.gov)](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE48558). As the data may require preprocessing, we have a dedicated step for this task. Next, the quality of the data is controlled, followed by performing principal component analysis. The pipeline then generates the correlation between samples. Finally, genes with the highest and lowest regulation will be extracted.
 
 
+![DAG](figures/DAG.png)
+
+
 # Usage
 
 ## Prerequisites
@@ -140,4 +143,3 @@ Please read this troubleshooting markdown if you have any problems in running th
 
 # References
 - Cramer-Morales K, Nieborowska-Skorska M, Scheibner K, Padget M et al. Personalized synthetic lethality induced by targeting RAD52 in leukemias identified by gene mutation and expression profile. Blood 2013 Aug 15;122(7):1293-304. PMID: 23836560
-- 
