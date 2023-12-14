@@ -1,4 +1,4 @@
-# BIOf 501 Project: Detecting Acute Myeloid Leukemia by using microarray gene expression data
+# BIOf 501 Project: Detecting Acute Myeloid Leukemia by using Microarray Gene Expression Data
 
 # Background
 Leukemia is a group of blood cancers that originate in the bone marrow, affecting the blood and the blood-forming tissues of the body. It is characterized by the abnormal proliferation of immature white blood cells, known as leukemia cells. These cells crowd out normal blood cells, leading to impaired function of the immune system, anemia, and other complications. [[1](https://www.cancer.org/cancer/leukemia.html)]
@@ -29,7 +29,7 @@ Leukemia detection involves a combination of clinical assessments, laboratory te
 5. Sequencing [[5](https://www.pennmedicine.org/cancer/types-of-cancer/leukemia/diagnosis)][[6](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5569671/)]
 
 
-In this pipeline, we are using microarray data from samples with and without AML (Acute Myeloid Leukemia) to gain insights related to data and genes that have an effect on this type of cancer. Additionally, the pipeline will generate visualizations and plots for Exploratory Data Analysis.
+In this pipeline, we are using microarray data from samples with and without AML (Acute Myeloid Leukemia) to gain insights to data and find genes that have significant effects on this cancer. Additionally, the pipeline will generate visualizations and plots for Exploratory Data Analysis purposes.
 
 First, we need to download the data. The selected data is from the [GEO Accession viewer (nih.gov)](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE48558). As the data may require preprocessing, we have a dedicated step for this task. Next, the quality of the data is controlled, followed by performing principal component analysis. The pipeline then generates the correlation between samples. Finally, genes with the highest and lowest regulation will be extracted.
 
@@ -70,7 +70,7 @@ Furthermore, in the first process required packages are installed automatically.
 ```
 
 
-If there is a problem realted to lack of these pacakges in the R, please read [Troubleshooting](troubleshooting.md).
+If there is a problem related to lack of these packages in the R, please read [Troubleshooting](troubleshooting.md).
 
 
 ## Run
@@ -92,6 +92,7 @@ cd BIOF-501-Project
 ```bash
 nextflow run pipeline.nf
 ```
+
 
 ## Input data
 
