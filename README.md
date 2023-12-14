@@ -12,7 +12,8 @@ Leukemia can be broadly classified into four main types based on the speed of di
 - **Acute myelogenous leukemia (AML).**  is a common type of leukemia. It occurs in children and adults.  is the most common type of acute leukemia in adults.
 - **Chronic lymphocytic leukemia (CLL).** With , the most common chronic adult leukemia, you may feel well for years without needing treatment.
 - **Chronic myelogenous leukemia (CML).** This type of leukemia mainly affects adults. A person with  may have few or no symptoms for months or years before entering a phase in which the leukemia cells grow more quickly.
-- **Other types.** Other, rarer types of leukemia exist, including hairy cell leukemia, myelodysplastic syndromes and myeloproliferative disorders.
+
+AML and ALL are common types of cancer, often found in young people and can be fatal without proper treatment. Detecting the causes of these cancers is crucial for early intervention.
 
 Leukemia arises from genetic mutations in the DNA of blood cells, leading to uncontrolled cell growth. While the exact causes remain elusive, several risk factors have been identified, including:
 
@@ -29,7 +30,7 @@ Leukemia detection involves a combination of clinical assessments, laboratory te
 5. Sequencing [[5](https://www.pennmedicine.org/cancer/types-of-cancer/leukemia/diagnosis)][[6](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5569671/)]
 
 
-In this pipeline, we are using microarray data from samples with and without AML (Acute Myeloid Leukemia) to gain insights to data and find genes that have significant effects on this cancer. Additionally, the pipeline will generate visualizations and plots for Exploratory Data Analysis purposes.
+In this pipeline, we are using microarray data from samples with and without AML (Acute Myeloid Leukemia) to gain insights to data and find genes that have significant effects on this cancer. Additionally, the pipeline will generate visualizations and plots for Exploratory Data Analysis purposes. 
 
 First, we need to download the data. The selected data is from the [GEO Accession viewer (nih.gov)](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE48558). As the data may require preprocessing, we have a dedicated step for this task. Next, the quality of the data is controlled, followed by performing principal component analysis. The pipeline then generates the correlation between samples. Finally, genes with the highest and lowest regulation will be extracted.
 
